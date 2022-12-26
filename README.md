@@ -20,4 +20,5 @@ You can use as many variables as you need ([*var0*] first variable,[*var1*] seco
 Each variable has a start and jump value, variable = (start value) + (start value)*((jump value)+1), you can control the jump value with the range slider in the function's tab on the left.
 ### Customs
 You can define custom functions to use in "Funcgraph-Customs.js" file
-
+# I will add comments and add or enhance functionnalities if i can, if you have any comments or remarks please let me know at idriss.el.moussaouiti@gmail.com
+# Idriss El Moussaouiti
