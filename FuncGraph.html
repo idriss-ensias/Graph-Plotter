@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <style>
+            canvas {
+                border: 1px solid #ffffff !important;
+                background-color: #ffffff !important;
+            }
+            body {
+                background-color: #CCCDCB;
+            }
+            #controlplane {
+                border: 1px solid #CCCDCB !important;
+            }
+            #functionplane {
+                border: 1px solid #CCCDCB !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="btn btn-dark w-100 m-1">Javascript graph plotter</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col overflow-auto" id="functionplane" style="height:600px !important">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary w-100 m-1">Functions</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div id="caca"></div>
+                </div>
+                <div class="col overflow-auto" id="controlplane" style="height:600px !important">
+                    <div class="row">
+                        <div class="col">
+                        </br><input type="range" class="form-control-range" id="marker_range" value="25"></br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary w-100" id="marker_info">test</button></br></br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control p-2" id="unit-value" value="1">
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-info  w-100" onclick="change_unit()">Rearrange</button></br></br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-info w-100" type="button" data-toggle="collapse" data-target="#graphpropertiescollapse" aria-expanded="false" aria-controls="graphpropertiescollapse">Properties</button></br></br>
+                            <div id="graphpropertiescollapse" class="m-1 w-100 collapse">
+                                <div class="card card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Grid</td>
+                                                        <td><input type="checkbox" class="form-check-label" id="gridctrl"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Markers</td>
+                                                        <td><input type="checkbox" class="form-check-label" id="markersctrl"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Numbers</td>
+                                                        <td><input type="checkbox" class="form-check-label" id="numbersctrl"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-info w-100" onclick="centerGraph()">Center</button></br></br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button class="btn btn-info w-100" type="button" data-toggle="collapse" data-target="#createfunctioncollapse" aria-expanded="false" aria-controls="createfunctioncollapse">New Function</button></br></br>
+                            <div id="createfunctioncollapse" class="m-1 w-100 collapse">
+                                <div class="card card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table">
+                                                <tbody id="func_create">
+                                                    <tr>
+                                                        <td>Name</td><td><input class="form-control" type="text" id="funcname"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Code</td><td><input class="form-control" type="textarea" id="funccode"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Color</td><td><input class="form-control" type="color" id="funccolor"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Variable</td>
+                                                        <td><input class="form-check-label" type="checkbox" id="funcvar"></td>
+                                                        <td><button type="button" class="btn btn-primary d-none" onclick="add_varu()" id="funcvarplus">+</button></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <button type="button" class="btn btn-secondary w-100" onclick="add_funcu()">Create Function</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-info w-100 m-1" onclick="screenshot()">Screenshot</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="FuncGraph-Customs.js"></script>
+        <script src="FuncGraph-Elements.js"></script>
+        <script src="FuncGraph-Builders.js"></script>
+        <script src="FuncGraph-Axis.js"></script>
+        <script src="FuncGraph-Functions.js"></script>
+        <script src="FuncGraph.js"></script>
+        <script>startGame();</script>
+    </body>
+</html>
