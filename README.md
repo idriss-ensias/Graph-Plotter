@@ -1,5 +1,5 @@
 # Graph Plotter made with javascript
-This is a small web page i developped using javascript to draw plots of mathematical functions.
+This is a small web page i developped using javascript to draw plots of mathematical functions. i am not a professional developper and would appreciate your feedback.
 ## Axis
 ### Concept
 Each pixel on the y and x axes represents a unit defined in the "Funcgraph.js" file. You can control the value of a unit on the field next to the "Rearrange" button.
